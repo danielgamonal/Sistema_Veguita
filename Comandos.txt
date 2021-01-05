@@ -9,4 +9,10 @@ stylus admin.styl -c -w
 
 https://www.youtube.com/watch?v=L5qpMejPai8&list=PLwqKNYKa9_zC1D7Z1dCqQMGZbcYSEZXdW&index=19
 
+composer update
+php artisan key generate
+
+pull trae
+push lleva
+
 
