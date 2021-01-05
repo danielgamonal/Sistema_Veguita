@@ -15,4 +15,8 @@ php artisan key generate
 pull trae
 push lleva
 
+git push -u origin master
+git pull origin master
+
+
 
