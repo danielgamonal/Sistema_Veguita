@@ -26,7 +26,7 @@
             <a href="{{ url('/admin/users') }}"><i class="fas fa-user-friends"></i> Usuarios </a>
         </li>
         <li>
-            <a href="{{url('/admin/categories')}}">
+            <a href="{{url('/admin/categories/0')}}">
                 <i class="far fa-folder-open"></i>Categorias
             </a>
         </li>

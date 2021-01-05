@@ -32,6 +32,15 @@
          </div>
          <div class="col-md-3">
             <label for="name">Categoría:</label>
+            <div class="input-group">
+               <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">
+                       <i class="far fa-keyboard"></i>
+                   </span>
+               </div>
+              {{--  traemos los modulos de categoria desde function.php --}}
+               {!! Form::select('category', $cats, 0, ['class'=>'custom-select']) !!}
+           </div>
          </div>
          <div class="col-md-3">
             <label for="name">Imagen:</label>
