@@ -1,0 +1,12 @@
+cd c:/www/mycms
+php artisan serve
+
+
+cd c:/www/mycms/public/static/css
+stylus connect.styl -c -w
+stylus admin.styl -c -w
+
+
+https://www.youtube.com/watch?v=L5qpMejPai8&list=PLwqKNYKa9_zC1D7Z1dCqQMGZbcYSEZXdW&index=19
+
+
