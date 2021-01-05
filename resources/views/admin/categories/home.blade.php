@@ -6,7 +6,7 @@
    <a href="{{url('/admin/categories')}}"><i class="far fa-folder-open"></i> categorias </a>
 </li>
 @endsection
-
+<!-- ljkhjijhjh -->
 @section('content')
     <div class="container-fluid">
         <div class="row">
