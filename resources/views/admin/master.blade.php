@@ -18,15 +18,7 @@
       <div class="wrapper">
          <div class="col1">@include('admin.sidebar')</div>
          <div class="col2">
-            <nav class="navbar navbar-expand-lg shadow">
-               <div class="collapse navbar-collapse">
-                  <ul class="navbar-nav">
-                     <li class="nav item">
-                        <a href="{{url('/admin')}}" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
-                     </li>
-                  </ul>
-               </div>
-            </nav>
+
             <div class="page">
                <div class="container-fluid">
                   <nav aria-label="breadcrumb shadow">

@@ -17,7 +17,7 @@
    </div>
    <div class="inside">
       {{--  Para el formulario se uso Laravel Collective --}}
-      {!! Form::open(['url' => '/admin/product/add']) !!}
+      {!! Form::open(['url' => '/admin/product/add', 'files' => true]) !!}
       <div class="row">
          <div class="col-md-6">
             <label for="name">Nombre del Producto:</label>
@@ -70,7 +70,7 @@
                   <i class="far fa-keyboard"></i>
                   </span>
                </div>
-               {!! Form::number('price', null, ['class' => 'form-control', 'min' => '0', 'step' => 'any']) !!}
+               {!! Form::number('quantity', null, ['class' => 'form-control', 'min' => '0', 'step' => 'any']) !!}
             </div>
          </div>
          <div class="col-md-3">

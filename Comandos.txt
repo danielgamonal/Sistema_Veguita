@@ -18,5 +18,7 @@ push lleva
 git push -u origin master
 git pull origin master
 
+
+cambiar segun equipo el filesystems.php
 aaaaaaaaaaaaaaa
 
