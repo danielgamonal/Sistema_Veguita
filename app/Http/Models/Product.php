@@ -14,4 +14,8 @@ class Product extends Model
     protected $table = 'products';
     protected $hidden = ['created_at', 'updated_at'];
 
+    public function cat(){
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
 }

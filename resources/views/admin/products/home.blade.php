@@ -19,8 +19,31 @@
                         <i class="fas fa-plus"></i>Agregar Producto
                     </a>
                 </div>
-                <table class="table">
-
+                <table class="table table-striped mtop16">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td></td>
+                            <td>Nombre</td>
+                            <td>Categoria</td>
+                            <td>Precio</td>
+                            <td>Cantidad/Kilos</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($products as $p)
+                            <tr>
+                                <td>{{$p->id}}</td>
+                                <td><img src="{{ url('uploads/'.$p->file_path.'/t_'.$p->image) }}" width="64"></td>
+                                <td>{{$p->name}}</td>
+                                <td>{{$p->cat->name}}</td>
+                                <td>{{$p->price}}</td>
+                                <td>{{$p->quantity}}</td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

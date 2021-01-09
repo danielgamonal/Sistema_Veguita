@@ -16,7 +16,9 @@ class ProductController extends Controller
 
     public function getHome()
     {
-        return view ('admin.products.home');
+        $products = Product::orderBy('id', 'desc')->paginate(25);
+        $data =['products' => $products];
+        return view ('admin.products.home', $data);
     }
 
     public function getProductAdd(){
@@ -45,17 +47,18 @@ class ProductController extends Controller
         else:
             $path = '/'.date('Y-m-d');//mantener separadas las imagenes carpetas para no colapsar
             $fileExt = trim($request->file('img')->getClientOriginalExtension());
-            $upload_path = config::get('filesystems.disks.uploads.root');
+            $upload_path = Config::get('filesystems.disks.uploads.root');
             $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
+            
             $filename = rand(1,999).'-'.$name.'.'.$fileExt;
             $file_file = $upload_path.'/'.$path.'/'.$filename;
-
+            
             $product = new Product;
             $product->status ='0';
             $product->name = e($request->input('name'));
             $product->slug = Str::slug($request->input('name'));
             $product->category_id = $request->input('category');
-            $product->file_path = date('y-m-d');
+            $product->file_path = date('Y-m-d');
             $product->image = $filename;
             $product->price = $request->input('price');
             $product->quantity = $request->input('quantity');
