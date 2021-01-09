@@ -11,12 +11,10 @@ https://www.youtube.com/watch?v=heWy7szOvZA&list=PLwqKNYKa9_zC1D7Z1dCqQMGZbcYSEZ
 
 composer update
 php artisan key generate
+composer require intervention/image
 
 pull trae
 push lleva
-
-git push -u origin master
-git pull origin master
 
 
 cambiar segun equipo el filesystems.php

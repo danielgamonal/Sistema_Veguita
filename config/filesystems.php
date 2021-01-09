@@ -57,7 +57,7 @@ return [
 
         'uploads' => [
             'driver' => 'local',
-            'root' => 'C:/www/Sistema_Veguita/public/uploads',
+            'root' => 'C:/www/mycms/public/uploads',
         ],
 
         's3' => [
