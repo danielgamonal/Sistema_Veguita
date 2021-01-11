@@ -34,13 +34,22 @@
                     <tbody>
                         @foreach ($products as $p)
                             <tr>
-                                <td>{{$p->id}}</td>
-                                <td><img src="{{ url('uploads/'.$p->file_path.'/t_'.$p->image) }}" width="64"></td>
+                                <td width="50">{{$p->id}}</td>
+                                <td width="64">
+                                    <a href="{{ url('uploads/'.$p->file_path.'/'.$p->image)}}" data-fancybox="gallery">
+                                    <img src="{{ url('uploads/'.$p->file_path.'/t_'.$p->image) }}" width="64">
+                                </a>                            
+                                </td>
                                 <td>{{$p->name}}</td>
                                 <td>{{$p->cat->name}}</td>
                                 <td>{{$p->price}}</td>
                                 <td>{{$p->quantity}}</td>
-                                <td></td>
+                                <td>
+                                    <div class="opts">
+                                        <a href="{{url('/admin/product/'.$p->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
+                                        <a href="{{url('/admin/product/'.$p->id.'/delete') }}" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
