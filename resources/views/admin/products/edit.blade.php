@@ -128,6 +128,37 @@
             </div>
         </div>
     </div>
+    <div class="panel shadow mtop16">
+       <div class="header">
+          <h2 class="title"><i class="far fa-image"></i>Galeria de Imagenes</h2>
+       </div>
+       <div class="inside product_gallery">
+          {!!Form::open(['url' => '/admin/product/'.$p->id.'/gallery/add', 'files' => true, 'id' => 'form_product_gallery'])!!}
+          {!!Form::file('file_image', ['id' => 'product_file_image', 'accept' => 'image/*', 'style' => 'display: none;', 'required'])!!}
+          {!!Form::close()!!}
+
+          <div class="thumb">
+             <a href="#" id="btn_product_file_image"><i class="fas fa-plus"></i></a>
+
+             @push('boton_imagen') // scripts es un nombre que nosotros determinamos
+            <script>
+            // acá el código JS
+            document.addEventListener('DOMContentLoaded', function() {
+	         var btn_product_file_image = document.getElementById('btn_product_file_image');
+	         var product_file_image = document.getElementById('product_file_image');
+	         btn_product_file_image.addEventListener('click', function() {
+		      product_file_image.click();
+	         })
+
+            product_file_image.addEventListener('change', function(){
+               document.getElementById('form_product_gallery').submit();
+            });
+            });
+           </script>
+           @endpush
+          </div>
+       </div>
+    </div>
 </div>
 </div>
 </div>

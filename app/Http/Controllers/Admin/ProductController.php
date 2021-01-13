@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator, Str, Config, Image;
-use App\Http\Models\Category, App\Http\Models\Product;
+use App\Http\Models\Category, App\Http\Models\Product, App\Http\Models\PGallery;
 
 class ProductController extends Controller
 {
@@ -82,7 +82,7 @@ class ProductController extends Controller
     }
 
     public function getProductEdit($id){
-        $p = Product::find($id);
+        $p = Product::findOrfail($id);
         $cats = category::where('module', '0')->pluck('name', 'id');
         $data = ['cats' => $cats, 'p' => $p];
         return view('admin.products.edit', $data);
@@ -135,6 +135,47 @@ class ProductController extends Controller
                     $img->save($upload_path.'/'.$path.'/t_'.$filename);
                 endif;
                 return back()->with('message', 'Actualizado con Exito')->with('typealert', 'success');
+            endif;
+        endif;
+    }
+
+    public function postProductGalleryAdd($id, Request $request){
+        $rules = [
+            'file_image' => 'required'
+        ];
+        $messages = [
+            'file_image.required' => 'Seleccione una imagen'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message', 'se ha producido un error')->with('typealert', 'danger')->withInput();
+        else:
+            if($request->hasFile('file_image')):
+                $path = '/'.date('Y-m-d');//mantener separadas las imagenes carpetas para no colapsar
+                $fileExt = trim($request->file('file_image')->getClientOriginalExtension());
+                $upload_path = Config::get('filesystems.disks.uploads.root');
+                $name = Str::slug(str_replace($fileExt, '', $request->file('file_image')->getClientOriginalName()));
+
+                $filename = rand(1,999).'-'.$name.'.'.$fileExt;
+                $file_file = $upload_path.'/'.$path.'/'.$filename;    
+                
+                $g = new PGallery;
+                $g->product_id = $id;
+                $g->file_path = date('Y-m-d');
+                $g->file_name = $filename;
+                
+                if($g->save()):
+                    if($request->hasFile('file_image')):
+                        $fl = $request->file_image->storeAs($path, $filename, 'uploads');
+                        $img = Image::make($file_file);
+                        //ajustamos la imagen
+                        $img->fit(256, 256, function($constraint){
+                            $constraint->upsize();
+                        });
+                        $img->save($upload_path.'/'.$path.'/t_'.$filename);
+                    endif;
+                    return back()->with('message', 'Imagen Subida con Exito')->with('typealert', 'success');
+                endif;
             endif;
         endif;
     }

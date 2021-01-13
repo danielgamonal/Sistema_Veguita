@@ -2,13 +2,12 @@ cd c:/www/mycms
 php artisan serve
 
 
-cd c:/www/mycms/public/static/css
+cd public/static/css
 stylus connect.styl -c -w
 stylus admin.styl -c -w
 
 
-https://www.youtube.com/watch?v=XMzIvWz-om8&list=PLwqKNYKa9_zC1D7Z1dCqQMGZbcYSEZXdW&index=31
-
+https://www.youtube.com/watch?v=3qSK4865OZA&list=PLwqKNYKa9_zC1D7Z1dCqQMGZbcYSEZXdW&index=34
 composer update
 php artisan key generate
 composer require intervention/image
