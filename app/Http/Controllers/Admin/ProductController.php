@@ -179,4 +179,22 @@ class ProductController extends Controller
             endif;
         endif;
     }
+
+    function getProductGalleryDelete($id, $gid){
+        $g = PGallery::findOrfail($gid);
+        $path = $g->file_path;
+        $file = $g->file_name;
+        $upload_path = Config::get('filesystems.disks.uploads.root');
+
+        if($g->product_id != $id){
+            return back()->with('message', 'La Imagen no se Puede Eliminar')->with('typealert','danger');
+        }else{
+            if($g->delete()):
+                /* unlink($upload_path.'/'.$path.'/'.$file); opcional, si se usa ya no seria un soft delete*/
+                /* unlink($upload_path.'/'.$path.'/t_'.$file); opcional, si se usa ya no seria un soft delete*/
+                return back()->with('message', 'Imagen borrada con Exito')->with('typealert', 'success');
+            endif;
+        }
+
+    }
 }

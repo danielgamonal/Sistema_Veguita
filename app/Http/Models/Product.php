@@ -18,4 +18,8 @@ class Product extends Model
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
+    public function getGallery(){
+        return $this->hasMany(PGallery::class, 'product_id', 'id');
+    }
+
 }

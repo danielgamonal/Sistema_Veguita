@@ -100,19 +100,39 @@ h2,h3,h4,h5,ul,body,html
 
 .product_gallery
     overflow hidden
-    .thumb
-          width 49%
-          float left
+    .btn-submit
+          width 100%
           display block
           margin-right 1%
           a
            border 1px dashed #6666
            display block
            text-align center
-           font-size 2em
-           padding 40px 0px
+           font-size 1.5em
+           padding 12px
            border-radius 4px
            color #333
            &:hover
                background-color #009a8a
                color #fff
+    .thumbs
+        overflow hidden
+        .thumb
+            margin-top 16px
+            float left
+            position relative
+            width 48%
+            a
+               background-color rgba(0,0,0, .5)
+               border-radius 50%
+               display inline-block
+               color #fff
+               padding 6px 10px
+               position absolute
+               bottom 8px
+               right 8px
+            img 
+               border-radius 4px
+               width 100%
+               &:nth-child(odd)
+                   margin-right 4%

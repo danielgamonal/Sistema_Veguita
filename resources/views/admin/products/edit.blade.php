@@ -137,10 +137,11 @@
           {!!Form::file('file_image', ['id' => 'product_file_image', 'accept' => 'image/*', 'style' => 'display: none;', 'required'])!!}
           {!!Form::close()!!}
 
-          <div class="thumb">
+          <div class="btn-submit">
              <a href="#" id="btn_product_file_image"><i class="fas fa-plus"></i></a>
 
-             @push('boton_imagen') // scripts es un nombre que nosotros determinamos
+
+             @push('boton_imagen')
             <script>
             // acá el código JS
             document.addEventListener('DOMContentLoaded', function() {
@@ -156,6 +157,16 @@
             });
            </script>
            @endpush
+          </div>
+          <div class="thumbs">
+             @foreach ($p->getGallery as $img)
+                 <div class="thumb">
+                    <a href="{{url('/admin/product/'.$p->id.'/gallery/'.$img->id.'/delete')}}" data-toogle="tooltip" data-placement="top" title="fas fa-trash-alt">
+                  <i class="fas fa-trash-alt"></i>
+                  </a>
+                  <img src="{{url('uploads/'.$img->file_path.'/t_'.$img->file_name)}}">
+                 </div>
+             @endforeach
           </div>
        </div>
     </div>
