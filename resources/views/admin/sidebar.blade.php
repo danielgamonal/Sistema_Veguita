@@ -3,7 +3,6 @@
     <div class="logo">
         <img src="{{ url('static/images/logo.png') }}" class="img-fluid">
     </div>
-
     <div class="user">
         <span class="subtitle">Hola:</span>
         <div class="name">
@@ -19,20 +18,10 @@
 </div>
 <div class="main">
     <ul>
-        <li>
-            <a href="{{ url('/admin') }}"><i class="fas fa-home"></i> Inicio </a>
-        </li>
-        <li>
-            <a href="{{ url('/admin/users') }}"><i class="fas fa-user-friends"></i> Usuarios </a>
-        </li>
-        <li>
-            <a href="{{url('/admin/categories/0')}}">
-                <i class="far fa-folder-open"></i>Categorias
-            </a>
-        </li>
-        <li>
-            <a href="{{ url('/admin/products') }}"><i class="fas fa-boxes"></i> Productos  </a>
-        </li>
+        <li><a href="{{ url('/admin') }}" class="lk-dashboard"><i class="fas fa-home"></i>Inicio</a></li>
+        <li><a href="{{ url('/admin/users')}}" class="lk-user_list"><i class="fas fa-user-friends"></i> Usuarios</a></li>
+        <li><a href="{{url('/admin/categories/0')}}" class="lk-categories lk-category_add lk-category_edit lk-category_delete"><i class="far fa-folder-open"></i>Categorias</a></li>
+        <li><a href="{{ url('/admin/products')}}" class="lk-products lk-products_add lk_product_edit lk-product_gallery_add"><i class="fas fa-boxes"></i> Productos</a></li>
     </ul>
 </div>
 </div>

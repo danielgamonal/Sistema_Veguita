@@ -34,8 +34,7 @@
                             <td>{{$user->email}}</td>
                             <td>
                                 <div class="opts">
-                                <a href="{{url('/admin/user/'.$user->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>
-                                <a href="{{url('/admin/user/'.$user->id.'/delete') }}" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{{url('/admin/user/'.$user->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Ver Usuario"><i class="fas fa-edit"></i></a>
                                 </div>
                             </td>
                         </tr>
