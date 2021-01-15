@@ -13,8 +13,12 @@ class UserController extends Controller
         $this->middleware('isadmin');
     }
 
-    public function getUsers(){
-        $users = User::orderBy('id', 'Desc')->get();
+    public function getUsers($status){
+        if($status == 'all'):
+            $users = User::orderBy('id', 'Desc')->paginate(30);
+        else:
+            $users = User::where('status', $status)->orderBy('id', 'Desc')->paginate(30);
+        endif;
         $data = ['users' => $users];
         return view('admin.users.home', $data);
     }
