@@ -47,10 +47,10 @@
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->lastname}}</td>
-                        <td>{{getRoleUserArrayKey($user->role)}}</td>
+                        <td>{{getRoleUserArray(null,$user->role)}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->cellphone_number}}</td>
-                        <td>{{getUserStatusArrayKey($user->status)}}</td>
+                        <td>{{getUserStatusArray(null,$user->status)}}</td>
                         <td>
                             <div class="opts">
                                 <a href="{{url('/admin/user/'.$user->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Ver Usuario"><i class="fas fa-edit"></i></a>

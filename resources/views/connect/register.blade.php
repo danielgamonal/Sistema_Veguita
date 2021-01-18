@@ -22,7 +22,7 @@
         {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
     </div>
 
-    <label for="email" class="mtop16">Apellido:</label>
+    <label for="lastname" class="mtop16">Apellido:</label>
     <div class="input-group">
         <div class="input-group-prepend">
             <div class="input-group-text">
@@ -40,6 +40,16 @@
             </div>
         </div>
         {!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
+    </div>
+
+    <label for="phone" class="mtop16">Numero De Celular:</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                <i class="far fa-envelope-open"></i>
+            </div>
+        </div>
+        {!! Form::number('phone', null, ['class' => 'form-control', 'required']) !!}
     </div>
 
     <label for="password" class="mtop16">Contraseña:</label>

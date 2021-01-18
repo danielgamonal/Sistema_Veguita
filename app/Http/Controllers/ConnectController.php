@@ -43,7 +43,11 @@ class ConnectController extends Controller
             //condicional para autentificar al usuario cuando sus credenciales sean correctos
             //si no, mostrara un mensaje que los datos son incorrectos
             if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], true)):
-                return redirect('/');
+                if(Auth::user()->status == "100"):
+                    return redirect('/logout');
+                else:
+                    return redirect('/');
+                endif;
             else:
                 return back()->with('message', 'los datos ingresados no son correctos')->with('typealert', 'danger');
             endif;
@@ -62,7 +66,8 @@ class ConnectController extends Controller
             'lastname' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'cpassword' => 'required|min:8|same:password'
+            'cpassword' => 'required|min:8|same:password',
+            'phone' => 'required'
         ];
 
         //mensaje para la regla de validacion
@@ -88,6 +93,7 @@ class ConnectController extends Controller
             $user->lastname = e($request->input('lastname'));
             $user->email = e($request->input('email'));
             $user->password = Hash::make($request->input('password'));
+            $user->cellphone_number = e($request->input('phone'));
 
             if ($user->save()):
                 return redirect('/login')->with('message', 'Su usuario se ha creado con exito, ahora puede iniciar sesion')->with('typealert', 'succes');
@@ -96,7 +102,12 @@ class ConnectController extends Controller
     }
 
     public function getLogout(){
+        $status = Auth::user()->status;
         Auth::logout();
-        return redirect('/');
+        if($status == "100"):
+        return redirect('/login')->with('message', 'Su usuario fue suspendido')->with('typealert', 'Danger');
+        else:
+            return redirect('/');
+        endif;
     }
 }

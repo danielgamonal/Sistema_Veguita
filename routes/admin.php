@@ -6,6 +6,7 @@ Route::prefix('/admin')->group(function(){
     //Modulo Usuario
     Route::get('/users/{status}', 'Admin\UserController@getUsers')->name('user_list');
     Route::get('/user/{id}/edit', 'Admin\UserController@getUserEdit')->name('user_edit');
+    Route::get('/user/{id}/banned', 'Admin\UserController@getUserBanned')->name('user_banned');
 
     //Modulo Productos
     Route::get('/products', 'Admin\ProductController@getHome')->name('products');

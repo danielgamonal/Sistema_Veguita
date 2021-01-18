@@ -10,6 +10,7 @@ class UserController extends Controller
 {
     public function __Construct(){
         $this->middleware('auth');
+        $this->middleware('user.status');
         $this->middleware('isadmin');
     }
 
@@ -27,5 +28,20 @@ class UserController extends Controller
         $u = User::findOrfail($id);
         $data = ['u' => $u];
         return view('admin.users.user_edit', $data);
+    }
+
+    public function getUserBanned($id){
+        $u = User::findOrfail($id);
+        if($u->status == "100"):
+            $u->status = "1";
+            $msg = "Usuario Reactivado";
+        else:
+            $u->status = "100";
+            $msg = "Usuario suspendido con Exito";
+        endif;
+
+        if($u->save()):
+            return back()->with('message', $msg)->with('typealert', 'success');
+        endif;
     }
 }
